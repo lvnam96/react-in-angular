@@ -1,0 +1,21 @@
+.btn {
+  background-color: #4caf50; /* Green */
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding: 3px 9px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.8rem;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.two-cols {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 100%;
+  max-width: 100%;
+}
