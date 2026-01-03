@@ -10,20 +10,13 @@ import { RxjsBridgeService } from 'src/react-app/rxjs-bridge.service';
 export class AppComponent implements OnInit {
   title = 'react-in-angular';
   showReactComponent = false;
-  FancyBox = () => import('ui-lib-react').then((m) => m.FancyBox);
   BlinkBlink = () => import('ui-lib-react').then((m) => m.BlinkBlink);
-  AnotherBox = () => import('ui-lib-react').then((m) => m.FancyBox);
   Pikachu = () => import('ui-lib-react').then((m) => m.Pikachu);
   counter = 0;
   handleClickBlinkFromAngular = (e: MouseEvent) => {
     this.counter++;
-    // Workaround: reassign to new object ref to let Angular know about the change
-    // This is necessary because the BlinkBlink component is a React component and it needs immutable props to display correctly
-    // this.blinkProps = {
-    //   ...this.blinkProps,
-    //   counter: this.counter,
-    // };
-
+    // The directive now automatically wraps callbacks in NgZone.run()
+    // so Angular change detection will trigger properly
     this.rxjsBridge.sendMessage({
       type: 'event.click',
       payload: {

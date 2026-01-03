@@ -1,13 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { LazyReactComponentDirective } from '../lazy-react.directive';
-import type { ComponentProps, createElement, ElementType } from 'react';
+import type { ComponentProps, ElementType } from 'react';
 
 @Component({
   standalone: true,
   selector: 'app-react-wrapper',
   imports: [LazyReactComponentDirective],
-  template:
-    '<div [id]="rootId" [reactComponent]="component" [props]="props"></div>',
+  template: '<div [id]="rootId" [reactComponent]="component" [props]="props"></div>',
 })
 export class ReactWrapperComponent<E extends ElementType = ElementType>
   implements OnInit

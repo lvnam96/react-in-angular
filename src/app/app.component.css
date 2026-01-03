@@ -18,4 +18,12 @@
   gap: 20px;
   width: 100%;
   max-width: 100%;
+  margin: 50px auto;
+  border: 1px #ccc solid;
+  padding: 10px;
+
+}
+
+.two-cols > div {
+  flex: 1 1;
 }

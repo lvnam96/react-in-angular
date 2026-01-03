@@ -11,8 +11,9 @@
 </div>
 
 <hr />
-<a routerLink="/dashboard">Go to Dashboard</a>
 <div style="padding: 20px">
+  <a class="btn" routerLink="/dashboard">Go to Dashboard</a>
+  <br />
   <button class="btn" style="background-color: blue" (click)="sendToReact1()">
     Send event to FancyBox
   </button>
@@ -22,55 +23,48 @@
   </button>
   <br />
   <div class="two-cols">
-    <div style="flex: 1 0 50%">
-      <h3>FancyBox</h3>
-      <app-react-wrapper
-        [component]="FancyBox"
-        [props]="{
-          text: 'FancyBox from Angular app',
-          rxSubject: rxSubject,
-          emitEvent: sendFromReact1
-        }"
-        rootId="unique-id-for-react-component-fancybox"
-      ></app-react-wrapper>
+    <div>
+      <h3>FancyBox (with Shadow DOM + lib.css + FancyBox.css)</h3>
+      <shadow-app-react-wrapper rootId="unique-id-for-react-component-fancybox"></shadow-app-react-wrapper>
     </div>
-    <div style="flex: 1 0 50%">
-      <h3>AnotherBox</h3>
-      <app-react-wrapper
-        [component]="AnotherBox"
-        [props]="{
+    <div>
+      <h3>AnotherFancyBox (with Shadow DOM + lib.css + AnotherFancyBox.css)</h3>
+      <shadow-app-react-wrapper [props]="{
           text: 'text from Angular app'
-        }"
-        rootId="unique-id-for-react-component-anotherbox"
-      ></app-react-wrapper>
+        }" rootId="unique-id-for-react-component-anotherbox"></shadow-app-react-wrapper>
     </div>
   </div>
   <div class="two-cols">
-    <div style="flex: 1 0 50%">
-      <h3>BlinkBlink, current counter: {{ counter }}</h3>
-      <app-react-wrapper
-        [component]="BlinkBlink"
-        [props]="{
+    <div>
+      <h3>BlinkBlink with counter from Angular</h3>
+      <app-react-wrapper [component]="BlinkBlink" [props]="{
+          counter: this.counter
+        }" rootId="unique-id-for-react-component-blinkblink"></app-react-wrapper>
+    </div>
+    <div>
+      <h3>BlinkBlink (clickable), current counter: {{ counter }}</h3>
+      <app-react-wrapper [component]="BlinkBlink" [props]="{
           counter: this.counter,
           onClick: this.handleClickBlinkFromAngular
-        }"
-        rootId="unique-id-for-react-component-blinkblink"
-      ></app-react-wrapper>
+        }" rootId="unique-id-for-react-component-blinkblink"></app-react-wrapper>
     </div>
-    <div style="flex: 1 0 50%">
+  </div>
+  <div class="two-cols">
+    <div>
+      <h3>
+        Placeholder for another React component
+      </h3>
+    </div>
+    <div>
       <h3>
         Pikachu -
         <button (click)="handleClickTogglePikachuSrc()" class="btn">
           toggle image src
         </button>
       </h3>
-      <app-react-wrapper
-        [component]="Pikachu"
-        [props]="{
+      <app-react-wrapper [component]="Pikachu" [props]="{
           src: pikachuSrc
-        }"
-        rootId="unique-id-for-react-component-pikachu"
-      ></app-react-wrapper>
+        }" rootId="unique-id-for-react-component-pikachu"></app-react-wrapper>
     </div>
   </div>
 </div>
